@@ -7,6 +7,7 @@ ERP basat en Odoo 12 i adaptat a localització espanyola. Entorn en proves.
 ## Construim imatge
 
 ```
+sudo apt-get install rsync
 ./get-modules.sh
 sudo docker build -t godoo12:1.0 .
 ```

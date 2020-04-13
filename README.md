@@ -36,6 +36,7 @@ Entram a http://localhost:8009 i cream la base de dades.
 
 ```
 cat spain_module_list.txt | sudo ./install-modules.sh -d <<database>> -c godoo12_web -f odoo.env
+sudo docker-compose restart
 ```
 
 # Mòduls 

@@ -1,0 +1,5 @@
+odoo.env
+sources/
+spain-addons/
+odoo_data/
+pg_data/

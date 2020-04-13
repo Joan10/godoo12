@@ -1,0 +1,35 @@
+version: '2'
+
+networks:
+  backend12g:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.22.0.0/24
+        gateway: 172.22.0.1
+
+services:
+  web:
+    container_name: godoo12_web
+    image: godoo12:1.0
+    env_file:
+      - odoo.env
+    depends_on:
+      - db
+    ports:
+      - "8009:8069"
+    volumes:
+      - ./odoo_data:/var/lib/odoo
+      - ./extra-addons:/mnt/extra-addons/
+    networks:
+      - backend12g
+  db:
+    container_name: godoo12_db
+    image: postgres:10
+    env_file:
+      - odoo.env
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdata
+    networks:
+      - backend12g

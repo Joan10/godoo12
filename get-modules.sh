@@ -16,7 +16,6 @@ sed -i -e "/l10n_es.account_tax_template_p_iva10_nd/d" -e "/l10n_es.account_tax_
 sed -i -e "/l10n_es.account_tax_template_p_iva10_nd/d" -e "/l10n_es.account_tax_template_p_iva4_nd/d"  ./spain-addons/l10n_es_aeat_mod390/data/tax_code_map_mod390_data.xml
 
 # Dependències extra
-echo "web" >> extra_oca_dependencies.txt
 # echo "" >> extra_oca_dependencies.txt install more extra dependencies
 while read m; do # Descarregam totes les dependències
         mkdir spain-addons/$m;

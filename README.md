@@ -8,7 +8,7 @@ ERP basat en Odoo 12 i adaptat a localització espanyola. Entorn en proves.
 
 ```
 sudo apt-get install rsync
-./get-modules.sh
+sudo ./get-modules.sh
 sudo docker build -t godoo12:1.0 .
 ```
 
@@ -57,7 +57,9 @@ Si aquest camp no està especificat correctament, no es renderitzaran els PDF co
 
 # Mòduls 
 
-## OCA Spain
+## Descarregar mòduls OCA Spain
+
+L'script `get-modules.sh` descarrega els mòduls d'OCA i les seves dependències.
 
 Els mòduls es descarreguen del gitlab d'OCA. Primer es col·loquen a un directori de mòduls que s'especifica a odoo.conf amb la variable `addons_path`. Hem de descarregar dos conjunts de mòduls:
 
@@ -66,10 +68,15 @@ Els mòduls es descarreguen del gitlab d'OCA. Primer es col·loquen a un directo
 
 Compte, que han d'estar tots els mòduls dins d'un mateix directori, sense subdirectoris. Alguns mòduls d'OCA es troben dins subdirectoris i s'han de moure o Odoo no els troba.
 
-Llavors podem instal·lar-los des de la web de l'Odoo.
+## Descarregar altres mòduls bàsics
 
-## Actualitzar mòduls OCA Spain
+L'script `get-modules.sh` descarrega també els mòduls especificats al fitxer extra_oca_dependencies.txt i totes les seves dependències.
 
+## Instal·lar mòduls
+
+Els mòduls descarregats han d'instal·lar-se a cada Base de Dades de l'Odoo. Això pot fer-se via web o mitjançant l'script `install-modules.sh`.
+
+## Actualitzar mòduls
 
 !!! Aquest procediment és complicat i pot donar problemes !!!
 Feu la prova abans en un entorn segur.
@@ -78,22 +85,31 @@ Per això cal refer la imatge de Docker. Passes:
 
 1. Refeim el directori d'addons:
 ```
-mv spain-addons{,.old} # el podem esborrar també
-mkdir spain-addons
+sudo mv spain-addons{,.old} # el podem esborrar també
+sudo mkdir spain-addons
 ```
 2. Descarregam de nou els mòduls:
 
 ```
-./get-modules.sh
+sudo ./get-modules.sh
 ```
 3. Refeim la imatge de Docker i tornam a arrancar:
 
 ```
 sudo docker build -t godoo12:1.0 .
-sudo docker-compose restart
+sudo docker-compose down
+sudo docker-compose up
+```
+4. Amb l'script `install-modules.sh` podem actualitzar els mòduls.
+
+```
+cat spain_module_list.txt | sudo ./install-modules.sh -d <<database>> -c godoo12_web -f odoo.env
 ```
 
-## Instal·lar altres mòduls
+Així mateix, ho podem fer també amb l'interfície web un per un anant a Aplicacions -> Actualitzacions o bé a Aplicacions -> Aplicacions i seleccionar cada aplicació per separat.
+
+
+## Instal·lar altres mòduls sense refer la imatge
 
 La carpeta extra-addons s'exporta amb el Docker Compose i permet afegir mòduls sense refer la imatge. 
 

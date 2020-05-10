@@ -12,7 +12,7 @@ networks:
 services:
   web:
     container_name: godoo12_web
-    image: godoo12:1.0
+    image: godoo12:1.1
     env_file:
       - odoo.env
     depends_on:

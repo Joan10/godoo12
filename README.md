@@ -76,12 +76,17 @@ Feu la prova abans en un entorn segur.
 
 Per això cal refer la imatge de Docker. Passes:
 
-1. Descarregam de nou els mòduls:
+1. Refeim el directori d'addons:
+```
+mv spain-addons{,.old} # el podem esborrar també
+mkdir spain-addons
+```
+2. Descarregam de nou els mòduls:
 
 ```
 ./get-modules.sh
 ```
-2. Refeim la imatge de Docker i tornam a arrancar:
+3. Refeim la imatge de Docker i tornam a arrancar:
 
 ```
 sudo docker build -t godoo12:1.0 .

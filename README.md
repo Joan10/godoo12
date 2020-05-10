@@ -96,7 +96,7 @@ sudo ./get-modules.sh
 3. Refeim la imatge de Docker i tornam a arrancar:
 
 ```
-sudo docker build -t godoo12:1.0 .
+sudo docker build -t godoo12:1.X .
 sudo docker-compose down
 sudo docker-compose up
 ```

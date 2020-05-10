@@ -106,8 +106,7 @@ sudo docker-compose up
 cat spain_module_list.txt | sudo ./install-modules.sh -d <<database>> -c godoo12_web -f odoo.env
 ```
 
-Així mateix, ho podem fer també amb l'interfície web un per un anant a Aplicacions -> Actualitzacions o bé a Aplicacions -> Aplicacions i seleccionar cada aplicació per separat.
-
+Compte, que així només actualitzarem els de la llista. Els altres que hem instal·lat ho hem de fer des del web. Ho podem fer amb l'interfície web un per un anant a Aplicacions -> Actualitzacions o bé a Aplicacions -> Aplicacions i seleccionar cada aplicació per separat.
 
 ## Instal·lar altres mòduls sense refer la imatge
 

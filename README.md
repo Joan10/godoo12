@@ -45,7 +45,8 @@ Si heu canviat el port per defecte (8069) pel qual accediu a l'Odoo, heu d'anar 
 
 * A la pestanya de l'esquerra: `Configuració -> Activar el mode programador`
 * A la pestanya de l'esquerra: `Configuració -> Tècnic -> Paràmetres del sistema`
-* Modificar el camp `web.base.url` i posar `localhost:8069`. 
+* Modificar/Afegir el camp `web.base.url` i posar `http://localhost:8069`. 
+* Modificar/Afegir el camp `report.url` i posar `http://localhost:8069`. 
 
 Més especificament, s'ha d'afegir una URL a la qual el programa `wkhtmltopdf`, des de dins el container, pugui accedir sense traves. Entenem com a traves SimpleHTTPAuth's, mappings de ports etc. 
 
